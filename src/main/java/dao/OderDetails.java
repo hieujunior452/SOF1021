@@ -1,4 +1,6 @@
 package dao;
 
-public interface OderDetails extends Dao_CRUD {
+import model.OrderDetails;
+
+public interface OderDetails extends Dao_CRUD<OrderDetails, Integer> {
 }

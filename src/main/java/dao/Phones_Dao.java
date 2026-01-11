@@ -1,4 +1,6 @@
 package dao;
 
-public interface Phones_Dao extends Dao_CRUD{
+import model.Phones;
+
+public interface Phones_Dao extends Dao_CRUD<Phones, Integer>{
 }

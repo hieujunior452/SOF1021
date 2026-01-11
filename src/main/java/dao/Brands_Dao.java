@@ -1,4 +1,6 @@
 package dao;
 
-public interface Brands_Dao extends Dao_CRUD{
+import model.Brands;
+
+public interface Brands_Dao extends Dao_CRUD<Brands, Integer>{
 }

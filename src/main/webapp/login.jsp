@@ -1,26 +1,67 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="vi">
 <head>
-    <title>Đăng nhập</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Bee Phone</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h2>Đăng nhập</h2>
+<header>
+    <h1>Bee Phone</h1>
+</header>
 
-<form action="/login" method="post">
-    <label>Tài khoản:</label>
-    <input type="text" name="username" placeholder="Tài khoản" required><br><br>
+<nav>
+    <ul>
+        <li><a href="/home">Trang chủ</a></li>
+        <li><a href="/home">Sản phẩm</a></li>
+        <li><a href="/login">Đăng nhập</a></li>
+        <li><a href="/register">Đăng ký</a></li>
+    </ul>
+</nav>
 
-    <label>Mật khẩu:</label>
-    <input type="password" name="password" placeholder="Mật khẩu" required><br><br>
+<div class="container">
+    <div class="form-container">
+        <h2 style="text-align: center; margin-bottom: 1.5rem;">Đăng nhập</h2>
+        
+        <c:if test="${error != null}">
+            <div class="alert alert-error">
+                ${error}
+            </div>
+        </c:if>
+        
+        <c:if test="${success != null}">
+            <div class="alert alert-success">
+                ${success}
+            </div>
+        </c:if>
+        
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label>Tài khoản:</label>
+                <input type="text" name="username" placeholder="Nhập tài khoản" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Mật khẩu:</label>
+                <input type="password" name="password" placeholder="Nhập mật khẩu" required>
+            </div>
+            
+            <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Đăng nhập</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 1.5rem;">
+            <p>Chưa có tài khoản? <a href="/register" style="color: #667eea; text-decoration: none;">Đăng ký ngay</a></p>
+        </div>
+    </div>
+</div>
 
-    <button type="submit">Đăng nhập</button>
-    <button type="button"><a href="/register.jsp">Đăng ký</a></button>
-</form>
-
-<p style="color:red">${error}</p>
+<footer class="footer">
+    <p>© 2025, Bee Phone. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
