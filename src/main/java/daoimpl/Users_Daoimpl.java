@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Users_Daoimpl implements Users_Dao {
 
-    private String sqlCreateUsers = "INSERT INTO Users (Username, Password, Email) VALUES (?, ?, ?)";
+    private String sqlCreateUsers = "INSERT INTO Users (Username, Password, FullName, Phone, Email) VALUES (?, ?, ?, ?, ?)";
     private String sqlUpdateUsers = "UPDATE Users SET FullName=?, Phone=?, Email=? WHERE UserId=?";
     private String sqlDeleteUsers = "DELETE FROM Users WHERE UserId=?";
     private String sqlFindById = "SELECT * FROM Users WHERE UserId=?";
@@ -20,7 +20,12 @@ public class Users_Daoimpl implements Users_Dao {
     
     @Override
     public void create(Users entity) {
-        XJdbc.executeUpdate(sqlCreateUsers, entity.getUsername(), entity.getPassword(), entity.getEmail());
+        XJdbc.executeUpdate(sqlCreateUsers, 
+            entity.getUsername(), 
+            entity.getPassword(), 
+            entity.getFullName(), 
+            entity.getPhone(), 
+            entity.getEmail());
     }
 
     @Override

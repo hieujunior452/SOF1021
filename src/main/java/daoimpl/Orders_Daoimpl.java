@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Orders_Daoimpl implements Orders_Dao {
     
-    private String sqlCreate = "INSERT INTO Orders (UserId, Total, Status) VALUES (?, ?, ?)";
+    private String sqlCreate = "INSERT INTO Orders (UserId, Total, Status, Address) VALUES (?, ?, ?, ?)";
     private String sqlUpdate = "UPDATE Orders SET Status=? WHERE OrderId=?";
     private String sqlDelete = "DELETE FROM Orders WHERE OrderId=?";
     private String sqlFindById = "SELECT * FROM Orders WHERE OrderId=?";
@@ -18,7 +18,7 @@ public class Orders_Daoimpl implements Orders_Dao {
     
     @Override
     public void create(Orders entity) {
-        XJdbc.executeUpdate(sqlCreate, entity.getUserId(), entity.getTotal(), entity.getStatus());
+        XJdbc.executeUpdate(sqlCreate, entity.getUserId(), entity.getTotal(), entity.getStatus(), entity.getAddress());
     }
 
     @Override
@@ -45,9 +45,9 @@ public class Orders_Daoimpl implements Orders_Dao {
         return XQuery.getBeanList(Orders.class, sqlFindByUser, userId);
     }
     
-    public int getLastInsertId(int userId, long total) {
-        String sql = "SELECT TOP 1 OrderId FROM Orders WHERE UserId = ? AND Total = ? ORDER BY OrderId DESC";
-        Integer id = XJdbc.getValue(sql, userId, total);
+    public int getLastInsertId(int userId, long total, String address) {
+        String sql = "SELECT TOP 1 OrderId FROM Orders WHERE UserId = ? AND Total = ? AND Address = ? ORDER BY OrderId DESC";
+        Integer id = XJdbc.getValue(sql, userId, total, address);
         return id != null ? id : 0;
     }
 }

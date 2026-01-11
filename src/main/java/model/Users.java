@@ -17,6 +17,14 @@ public class Users {
         Email = email;
     }
 
+    public Users(String username, String password, String fullName, String phone, String email) {
+        Username = username;
+        Password = password;
+        FullName = fullName;
+        Phone = phone;
+        Email = email;
+    }
+
     public int getUserId() {
         return UserId;
     }

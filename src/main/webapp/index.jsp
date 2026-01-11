@@ -16,7 +16,13 @@
 </header>
 
 <nav>
-    <ul>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <ul class="menu">
         <li><a href="/home">Trang chủ</a></li>
         <li><a href="/home">Sản phẩm</a></li>
         <c:if test="${sessionScope.user != null}">

@@ -26,6 +26,8 @@ public class RegisterServlet extends HttpServlet {
         try {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            String fullName = request.getParameter("fullName");
+            String phone = request.getParameter("phone");
             String email = request.getParameter("email");
 
             // Validate input
@@ -37,6 +39,18 @@ public class RegisterServlet extends HttpServlet {
 
             if (password == null || password.trim().isEmpty()) {
                 request.setAttribute("error", "Mật khẩu không được để trống!");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+                return;
+            }
+
+            if (fullName == null || fullName.trim().isEmpty()) {
+                request.setAttribute("error", "Họ và tên không được để trống!");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+                return;
+            }
+
+            if (phone == null || phone.trim().isEmpty()) {
+                request.setAttribute("error", "Số điện thoại không được để trống!");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
                 return;
             }
@@ -55,8 +69,9 @@ public class RegisterServlet extends HttpServlet {
                 return;
             }
 
-            // Tạo tài khoản mới
-            usersDao.create(new Users(username.trim(), password.trim(), email.trim()));
+            // Tạo tài khoản mới với đầy đủ thông tin
+            Users newUser = new Users(username.trim(), password.trim(), fullName.trim(), phone.trim(), email.trim());
+            usersDao.create(newUser);
             request.setAttribute("success", "Đăng ký thành công! Vui lòng đăng nhập.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
 

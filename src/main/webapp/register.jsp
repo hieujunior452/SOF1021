@@ -15,7 +15,13 @@
 </header>
 
 <nav>
-    <ul>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <ul class="menu">
         <li><a href="/home">Trang chủ</a></li>
         <li><a href="/home">Sản phẩm</a></li>
         <li><a href="/login">Đăng nhập</a></li>
@@ -35,17 +41,27 @@
         
         <form action="/register" method="post">
             <div class="form-group">
-                <label>Tài khoản:</label>
+                <label>Tài khoản: <span style="color: red;">*</span></label>
                 <input type="text" name="username" placeholder="Nhập tài khoản" required>
             </div>
             
             <div class="form-group">
-                <label>Mật khẩu:</label>
+                <label>Mật khẩu: <span style="color: red;">*</span></label>
                 <input type="password" name="password" placeholder="Nhập mật khẩu" required>
             </div>
             
             <div class="form-group">
-                <label>Email:</label>
+                <label>Họ và tên: <span style="color: red;">*</span></label>
+                <input type="text" name="fullName" placeholder="Nhập họ và tên" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Số điện thoại: <span style="color: red;">*</span></label>
+                <input type="tel" name="phone" placeholder="Nhập số điện thoại" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Email: <span style="color: red;">*</span></label>
                 <input type="email" name="email" placeholder="Nhập email" required>
             </div>
             

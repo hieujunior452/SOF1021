@@ -8,6 +8,7 @@ public class Orders {
     private Date OrderDate;
     private long Total;
     private String Status;
+    private String Address;
 
     public Orders() {}
 
@@ -49,5 +50,13 @@ public class Orders {
 
     public void setStatus(String status) {
         Status = status;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
     }
 }
